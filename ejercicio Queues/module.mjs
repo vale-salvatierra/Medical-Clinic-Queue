@@ -11,6 +11,12 @@ const nextTurn = document.querySelector('#nextTurn')
 
 const queue = new Queue()
 
+const speak = (text) => {
+    const msg = new SpeechSynthesisUtterance(text);
+    msg.lang = "en-GB"; // Puedes usar "es-ES" para español
+    window.speechSynthesis.speak(msg);
+}
+
 
 const waitingList = () =>{
     let patients = queue.toArr()
@@ -67,10 +73,14 @@ form.addEventListener('submit', (e)=>{
 btnAtender.addEventListener('click',() => {
     const atendiendo = queue.dequeue()
     if(atendiendo){
-        divCurrentTurn.innerHTML = `<h2 class="fw-bold fs-2">${atendiendo.name}</h2>
+        speak(`Calling the next patient: ${atendiendo.name}`);
+
+        divCurrentTurn.innerHTML = `<h2 
+        class="fw-bold fs-2">${atendiendo.name}</h2>
         <p class="fw-normal fs-3">${atendiendo.age} - ${atendiendo.symptoms}</p>`
     }else{
         divCurrentTurn.textContent = '---'
+        speak("There are no more patients in the queue. TThank you for your patience");
     }
 
     const nextPatient = queue.peek()
@@ -78,6 +88,7 @@ btnAtender.addEventListener('click',() => {
         nextTurn.innerHTML = `<h3 class="fw-normal fs-6"><b>Next patient: </b>${nextPatient.name}</h3>`
     }else{
         nextTurn.innerHTML = ''
+
     }
 
     waitingList()
