@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medical Clinic Queue</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="custom.css">
+</head>
+
+<body>
+    <div class="container py-4">
+        <h2 class="text-center mb-4 title">Medical Clinic Queue</h2>
+
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <form id="form-turno">
+                            <div class="mb-3">
+                                <label for="fullName" class="form-label">Full Name</label>
+                                <input type="text" class="form-control" id="fullName" placeholder="Patient's Full Name"
+                                    required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="inputAge" class="form-label">Age</label>
+                                <input type="number" class="form-control" id="inputAge" placeholder="Patient's Age"
+                                    required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="symptoms" class="form-label">Symptoms</label>
+                                <textarea class="form-control" id="symptoms" rows="3"
+                                    placeholder="Describe the patient's main symptoms.  "></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-teal w-100 text-white"
+                                style="background-color: #02837a;" id="btnForm">Add to the queue</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-8">
+                <div class="card shadow-sm">
+                    <div class="card-header">
+                        <h4 class="title text-center mt-3">
+                            <i class="bi bi-bell"></i> Current Turn
+                        </h4>
+                    </div>
+                    <div class="card-body text-center">
+                        <div class="queue-box" id="divCurrentTurn"></div>
+                        <button class="btn mt-3 text-white" style="background-color: #128d85;" id="btnAtender">See next Patient</button>
+
+                        <div class="queue-box2 mt-3" id="nextTurn">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="card mt-4 shadow-sm">
+            <div class="card-header">
+                <h5 class="title">Pacientes en Espera</h5>
+            </div>
+            <div class="card-body">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Age</th>
+                            <th scope="col">Symptoms</th>
+                            <th scope="col">Arrival Time</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tBody">
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+    <script type="module" src="/ejercicio Queues/module.mjs"></script>
+</body>
+
+</html>
